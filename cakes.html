@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit Patisserie</title>
+    <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header>
+
+    <div class="banner" style="font-family: Century Gothic, sans-serif;">Welcome to Le Petit Patisserie!</div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+        <a href="menu.html">Menu ▼</a>
+            <div class="dropdown-content">
+                <a href="pastries.html">Pastries</a>
+                <a href="bread.html">Breads & Sandwiches</a>
+                <a href="cakes.html">Cakes</a>
+                <a href="beverages.html">Beverages</a>
+            </div>
+        </div>
+        <a href="club.html">Le Petit's Club</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+
+</header>
+    <h1 style="text-align: center;">CAKE</h1>
+    <div class="product-grid">
+
+        <a href="burnt.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/burnt.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 11.90</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='burnt.html'">Order</button>
+            </div>
+        </a>
+
+        <a href="blueberry.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/blueberry.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 15.00</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='blueberry.html'">Order</button>
+            </div>
+        </a>
+
+        <a href="biscoff.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/biscoff2.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 15.00</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='biscoff.html'">Order</button>
+            </div>
+        </a>
+
+        <a href="signature.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/sigcake.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 18.00</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='signature.html'">Order</button>
+            </div>
+        </a>
+
+        <a href="tiramisu.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/tiramisu.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 14.90</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='tiramisu.html'">Order</button>
+            </div>
+        </a>
+
+        <a href="fudge.html" class="product-card-link">
+            <div class="product-card">
+                <img src="image/choc cake.jpg" alt="Product Image" class="product-image">
+                <div class="product-price">RM 18.90</div>
+                <button class="add-to-cart-btn" onclick="window.location.href='fudge.html'">Order</button>
+            </div>
+        </a>
+    </div>
+
+    <a href="order.html" class="floating-cart">
+    <i class="fas">&#xf2e7;</i>
+    </a>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+<footer>
+
+    <p>
+        © 2026 Le Petit Patisserie | Quality in Every Crumb
+    </p>
+
+</footer>
+
+</body>
+</html>
