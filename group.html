@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit Patisserie</title>
+    <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header>
+
+    <div class="banner" style="font-family: Century Gothic, sans-serif;">Welcome to Le Petit Patisserie!</div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+        <a href="menu.html">Menu ▼</a>
+            <div class="dropdown-content">
+                <a href="pastries.html">Pastries</a>
+                <a href="bread.html">Breads & Sandwiches</a>
+                <a href="cakes.html">Cakes</a>
+                <a href="beverages.html">Beverages</a>
+            </div>
+        </div>
+        <a href="club.html">Le Petit's Club</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+<section style="text-align: center;">
+    <h2>IML254 GROUP PROJECT</h2>
+    <p>Title: Corporate Website</p>
+    <p>Group: KCDIM1444E</p>
+    <p>Course Code: CDIM144</p>
+    <p>Course Name: Diploma in Library Informatic</p>
+    <p>Faculty: Faculty of Information Science</p>
+    <p>Submission Date: 1st July 2026</p>
+</section>
+
+
+<section>
+    <h2>Group Members</h2>
+    <div class="about-container">
+        <img src="image/fari.jpg" alt="Faridatul">
+        <div>
+            <h3>FARIDATUL NURAIN BINTI AHMAD TAMIZI (2024258686)</h3>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="about-container">
+        <img src="image/liyans.jpg" alt="Fatin Liyana">
+        <div>
+            <h3>FATIN LIYANA BINTI ABDU BAKAR (2024403552)</h3>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="about-container">
+        <img src="image/jane.jpg" alt="Johanna Jane">
+        <div>
+            <h3>JOHANNA JANE BINTI JOHNNY (2024216106)</h3>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="about-container">
+        <img src="image/nisaa.jpg" alt="Nisaa">
+        <div>
+            <h3>NISAA' AZ-ZAHRAA BINTI KHAIROL BASRI (2024843452)</h3>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="about-container">
+        <img src="image/far.jpg" alt="Ellysha">
+        <div>
+            <h3>NUR ELLYSHA FAREENA BINTI ARFIAN (2024411906)</h3>
+        </div>
+    </div>
+</section>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+<footer>
+    <p>
+        © 2026 Le Petit Patisserie | Quality in Every Crumb
+    </p>
+</footer>
+
+</body>
+</html>

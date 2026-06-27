@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit Patisserie</title>
+    <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header>
+
+    <div class="banner" style="font-family: Century Gothic, sans-serif;">Welcome to Le Petit Patisserie!</div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+        <a href="menu.html">Menu ▼</a>
+            <div class="dropdown-content">
+                <a href="pastries.html">Pastries</a>
+                <a href="bread.html">Breads & Sandwiches</a>
+                <a href="cakes.html">Cakes</a>
+                <a href="beverages.html">Beverages</a>
+            </div>
+        </div>
+        <a href="club.html">Le Petit's Club</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+
+</header>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Note: </strong>Click on the utensils icon <i class="fas">&#xf2e7;</i> on the bottom right to view your order list.
+    </div>
+    <h1 style="text-align: center;">MENU</h1>
+    <p style="text-align: center;">Click on any of the images below to browse our menu.</p>
+
+    <div class="grid-container">
+    <div class="image-container">
+        <a href="pastries.html"><img src="image/head pastry.jpg" alt="kwason" style="width:300px;height:350px;"></a>
+    </div>
+    <div class="image-container">
+        <a href="bread.html"><img src="image/head bread.jpg" alt="roti" style="width:300px;height:350px;"></a>
+    </div>
+    <div class="image-container">
+        <a href="cakes.html"><img src="image/head cakes.jpg" alt="kek" style="width:300px;height:350px;"></a>
+    </div>
+    <div class="image-container">
+        <a href="beverages.html"><img src="image/head bev.jpg" alt="air" style="width:300px;height:350px;"></a>
+    </div>
+</div>
+
+<a href="order.html" class="floating-cart">
+    <i class="fas">&#xf2e7;</i>
+</a>
+    
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+    </script>
+
+<footer>
+    <p>
+        © 2026 Le Petit Patisserie | Quality in Every Crumb
+    </p>
+</footer>
+
+</body>
+</html>

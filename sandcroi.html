@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit Patisserie</title>
+    <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header>
+
+    <div class="banner" style="font-family: Century Gothic, sans-serif;">Welcome to Le Petit Patisserie!</div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+        <a href="menu.html">Menu ▼</a>
+            <div class="dropdown-content">
+                <a href="pastries.html">Pastries</a>
+                <a href="bread.html">Breads & Sandwiches</a>
+                <a href="cakes.html">Cakes</a>
+                <a href="beverages.html">Beverages</a>
+            </div>
+        </div>
+        <a href="club.html">Le Petit's Club</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</header>
+
+<div class="menu-container">
+
+    <div class="image-section">
+        <img src="image/sand bagel.jpg" alt="sandwich croissant">
+
+        <div class="quantity-control">
+            <button id="decreaseBtn">-</button>
+            <input type="number" id="quantity" value="1" min="1">
+            <button id="increaseBtn">+</button>
+        </div>
+
+
+        <div class="addon-options">
+            <h3>Add-on Options</h3>
+
+            <label>
+                <input type="checkbox" class="addon" value="4">
+                + Smoked Salmon (+RM 4.00)
+            </label><br>
+
+            <label>
+                <input type="checkbox" class="addon" value="3">
+                + Beef slice (+RM 3.00)
+            </label><br>
+
+            <label>
+                <input type="checkbox" class="addon" value="2">
+                + Chicken slice (+RM 2.00)
+            </label>
+        </div>
+
+        <div class="price" id="price">RM 24.90</div>
+            <button class="buy-btn" onclick="addToCart()">
+                Order
+            </button>
+    </div>
+
+    <div class="details-section">
+        <h1>Sandwich Croissant</h1>
+        <p>
+        Soft, layered, buttery croissant with chicken slices, scrambled eggs, mixed vegetables (lettuce and tomato),
+        coupled with garlic aioli (garlic, mayonnaise, and black pepper) and a squeeze of lemon for the perfect brunch
+        croissant. Pair it with any of the add-on options for an even delicious combo :) 
+        </p>
+        <h2 style="margin-top: 15px;">Allergen Information</h2>
+        <ul style="margin-inline: 20px;">
+            <li>Wheat</li>
+            <li>Gluten</li>
+            <li>Eggs</li>
+        </ul>  
+    </div>
+</div>
+
+<a href="order.html" class="floating-cart">
+    <i class="fas">&#xf2e7;</i>
+</a>
+
+<script>
+    function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    const increaseBtn = document.getElementById('increaseBtn');
+    const quantityInput = document.getElementById('quantity');
+    const priceDisplay = document.getElementById('price');
+
+    const unitPrice = 24.90;
+const addonCheckboxes = document.querySelectorAll('.addon');
+
+function updatePrice() {
+    let qty = parseInt(quantityInput.value);
+
+    if (isNaN(qty) || qty < 1)
+        qty = 1;
+
+    quantityInput.value = qty;
+
+    let addonTotal = 0;
+
+    addonCheckboxes.forEach(box => {
+        if (box.checked) {
+            addonTotal += parseFloat(box.value);
+        }
+    });
+
+    const total = ((unitPrice + addonTotal) * qty).toFixed(2);
+
+    priceDisplay.textContent = `RM ${total}`;
+
+    decreaseBtn.disabled = qty <= 1;
+}
+    
+    addonCheckboxes.forEach(box => {
+    box.addEventListener('change', updatePrice);
+});
+
+    decreaseBtn.addEventListener('click', () => {
+        quantityInput.value = Math.max(1, parseInt(quantityInput.value) - 1);
+        updatePrice();
+    });
+
+    increaseBtn.addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updatePrice();
+    });
+
+    quantityInput.addEventListener('input', updatePrice);
+
+    updatePrice();
+
+    function addToCart() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const quantity = parseInt(quantityInput.value);
+
+    let addons = [];
+    let addonTotal = 0;
+
+    addonCheckboxes.forEach(box => {
+        if (box.checked) {
+            addons.push(box.parentElement.textContent.trim());
+            addonTotal += parseFloat(box.value);
+        }
+    });
+
+    cart.push({
+        name: "Sandwich Croissant",
+        unitPrice: unitPrice,
+        quantity: quantity,
+        addons: addons,
+        totalPrice: (unitPrice + addonTotal) * quantity
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
+}
+</script>
+
+<footer>
+
+    <p>
+        © 2026 Le Petit Patisserie | Quality in Every Crumb
+    </p>
+
+</footer>
+</body>
+</html>

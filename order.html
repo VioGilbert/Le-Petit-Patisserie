@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit Patisserie</title>
+    <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        th,td{
+            border:1px solid #eed6b8;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:#eed6b8;
+        }
+    </style>
+</head>
+<body>
+<header>
+
+    <div class="banner" style="font-family: Century Gothic, sans-serif;">Welcome to Le Petit Patisserie!</div>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div id="mySidenav" class="sidenav">
+        <span class="closebtn" onclick="closeNav()">&times;</span>
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+        <a href="menu.html">Menu ▼</a>
+            <div class="dropdown-content">
+                <a href="pastries.html">Pastries</a>
+                <a href="bread.html">Breads & Sandwiches</a>
+                <a href="cakes.html">Cakes</a>
+                <a href="beverages.html">Beverages</a>
+            </div>
+        </div>
+        <a href="club.html">Le Petit's Club</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</header>
+
+<h1 style="text-align: center;">Your Order</h1>
+
+<table>
+
+<thead>
+<tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Delete</th>
+</tr>
+</thead>
+
+<tbody id="cartTable">
+</tbody>
+
+</table>
+
+<div class="total">
+    Total: RM <span id="grandTotal">0.00</span>
+</div>
+
+<button class="order-btn" onclick="submitOrder()">
+    Submit Order
+</button>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+displayCart();
+
+function displayCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const table = document.getElementById("cartTable");
+    let grandTotal = 0;
+
+    table.innerHTML = "";
+
+    if(cart.length === 0){
+        table.innerHTML = `
+        <tr>
+            <td colspan="4">Cart is empty</td>
+        </tr>
+        `;
+        document.getElementById("grandTotal").textContent = "0.00";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        grandTotal += item.totalPrice;
+
+        let addonText = "";
+
+        if(item.addons && item.addons.length > 0){
+            addonText =
+                "<br><small><strong>Add-ons:</strong><br>" +
+                item.addons.join("<br>") +
+                "</small>";
+        }
+
+        table.innerHTML += `
+        <tr>
+            <td>
+                ${item.name}
+                ${addonText}
+            </td>
+            <td>${item.quantity}</td>
+            <td>RM ${item.totalPrice.toFixed(2)}</td>
+            <td>
+                <button class="delete-btn" onclick="deleteItem(${index})">
+                    🗑️
+                </button>
+            </td>
+        </tr>
+        `;
+    });
+
+    document.getElementById("grandTotal").textContent =
+        grandTotal.toFixed(2);
+}
+
+// OUTSIDE displayCart()
+function deleteItem(index){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+}
+
+    document.getElementById("grandTotal").textContent =
+        grandTotal.toFixed(2);
+
+function submitOrder(){
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+    alert("Your order has been sent to the kitchen! Please pay at the counter.");
+    localStorage.removeItem("cart");
+    displayCart();
+}
+</script>
+
+<footer>
+    <p>
+        © 2026 Le Petit Patisserie | Quality in Every Crumb
+    </p>
+</footer>
+
+
+</body>
+</html>
